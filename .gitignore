@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# npm pack artifacts
+*.tgz
+
+# Local planning docs
+docs/superpowers/
