@@ -1,0 +1,95 @@
+{
+  "name": "card-orbit",
+  "version": "0.1.0",
+  "description": "Path-constrained 3D card orbit carousel for React and Vue — rise, arc, exit. No Framer Motion / GSAP. Copy-as-source friendly.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./vue": {
+      "types": "./src/vue/index.ts",
+      "import": "./src/vue/index.ts",
+      "default": "./src/vue/index.ts"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "src/core",
+    "src/react",
+    "src/vue",
+    "src/vue-shim.d.ts",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "vite --config demo/vite.config.ts",
+    "build": "tsup && node scripts/postbuild.mjs",
+    "build:demo": "vite build --config demo/vite.config.ts",
+    "preview": "vite preview --config demo/vite.config.ts",
+    "lint": "oxlint src demo/src",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p demo/tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "vue": ">=3.3"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "oxlint": "^1.79.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3",
+    "tsup": "^8.5.0",
+    "typescript": "~5.8.3",
+    "vite": "^8.2.2",
+    "vue": "^3.5.42"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "carousel",
+    "card",
+    "orbit",
+    "3d",
+    "animation",
+    "hero",
+    "raf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luzhaotian/card-orbit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Luzhaotian/card-orbit/issues"
+  },
+  "homepage": "https://github.com/Luzhaotian/card-orbit#readme"
+}
