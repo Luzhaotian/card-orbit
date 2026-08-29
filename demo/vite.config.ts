@@ -6,9 +6,17 @@ import { defineConfig } from 'vite'
 
 const root = path.dirname(fileURLToPath(import.meta.url))
 
+// Project Pages: https://luzhaotian.github.io/card-orbit/
+const base = process.env.GITHUB_PAGES === 'true' ? '/card-orbit/' : '/'
+
 export default defineConfig({
   root,
+  base,
   publicDir: path.join(root, 'public'),
+  build: {
+    outDir: path.join(root, 'dist'),
+    emptyOutDir: true,
+  },
   plugins: [react(), tailwindcss()],
   resolve: {
     // More-specific alias must come first — object form can prefix-replace

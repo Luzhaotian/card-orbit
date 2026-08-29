@@ -5,6 +5,8 @@ Path-constrained 3D card orbit for **React** and **Vue** — rise → arc → ex
 
 动效灵感与参考实现来自：[tasteskill.dev](https://tasteskill.dev)。
 
+**在线 Demo：** [https://luzhaotian.github.io/card-orbit/](https://luzhaotian.github.io/card-orbit/)
+
 动效原理：
 
 - [专业版](./docs/动效说明-专业.md)
@@ -97,16 +99,35 @@ dist/         # npm React 构建产物
 
 ## 发布到 npm
 
-1. 确认包名未被占用：`npm view card-orbit`（若占用可改 `name`）
-2. 登录并发布：
+发布前检查：
+
+- [x] 包名 `card-orbit` 可用（registry 上尚无此包）
+- [x] `version` 当前为 `0.1.0`
+- [x] `prepublishOnly` 会跑 typecheck + build
+- [ ] 已登录 npm：`npm whoami`（未登录则 `npm login`）
+
+本地预览将上传的文件：
 
 ```bash
-npm login
-npm run build
-npm publish --access public
+npm run pack:check
 ```
 
-若要用 scoped 包名（如 `@you/card-orbit`），只改 `package.json` 的 `"name"` 即可。
+正式发布（公开包）：
+
+```bash
+npm publish
+```
+
+（已配置 `publishConfig.access: public`，一般无需再加 `--access public`。）
+
+发布后验证：
+
+```bash
+npm view card-orbit
+npm install card-orbit
+```
+
+若要用 scoped 包名（如 `@luzhaotian/card-orbit`），改 `package.json` 的 `"name"` 后再发布。
 
 ## License
 

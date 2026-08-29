@@ -2,7 +2,10 @@ import { CardOrbit, CardOrbitMobile } from 'card-orbit'
 import 'card-orbit/styles.css'
 import { HeroCopy } from './HeroCopy'
 
-const IMAGES = Array.from({ length: 7 }, (_, i) => `/heroimg${i + 1}.webp`)
+const IMAGES = Array.from(
+  { length: 7 },
+  (_, i) => `${import.meta.env.BASE_URL}heroimg${i + 1}.webp`,
+)
 
 export default function App() {
   return (
