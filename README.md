@@ -3,6 +3,8 @@
 Path-constrained 3D card orbit for **React** and **Vue** — rise → arc → exit.  
 手写 `requestAnimationFrame` + 数学路径，**不依赖** Framer Motion / GSAP。
 
+动效灵感与参考实现来自：[tasteskill.dev](https://tasteskill.dev)。
+
 动效原理：
 
 - [专业版](./docs/动效说明-专业.md)
