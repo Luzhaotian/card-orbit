@@ -1,6 +1,6 @@
 {
   "name": "card-orbit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Path-constrained 3D card orbit carousel for React and Vue — rise, arc, exit. No Framer Motion / GSAP. Copy-as-source friendly.",
   "license": "MIT",
   "author": "Lu Zhaotian",
@@ -34,7 +34,8 @@
     "LICENSE",
     "docs/使用说明.md",
     "docs/动效说明-专业.md",
-    "docs/动效说明-大白话.md"
+    "docs/动效说明-大白话.md",
+    "docs/轨道演示.html"
   ],
   "publishConfig": {
     "access": "public"
@@ -67,15 +68,22 @@
     }
   },
   "devDependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/katex": "^0.16.8",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "@types/three": "^0.185.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "katex": "^0.18.4",
     "oxlint": "^1.79.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3",
     "tailwindcss": "^4.3.3",
+    "three": "^0.185.1",
     "tsup": "^8.5.0",
     "typescript": "~5.8.3",
     "vite": "^8.2.2",

@@ -4,6 +4,8 @@ export {
   samplePath,
   cardTransformStyle,
   createOrbit,
+  F,
+  G,
   DEFAULT_ACTIVE_WINDOW,
   DEFAULT_AUTO_SPEED,
   DEFAULT_DRAG_SENSITIVITY,

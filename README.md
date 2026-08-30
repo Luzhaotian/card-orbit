@@ -6,12 +6,14 @@ Path-constrained 3D card orbit for **React** and **Vue** — rise → arc → ex
 动效灵感与参考实现来自：[tasteskill.dev](https://tasteskill.dev)。
 
 **在线 Demo：** [https://luzhaotian.github.io/card-orbit/](https://luzhaotian.github.io/card-orbit/)  
-**npm：** [`card-orbit@0.1.1`](https://www.npmjs.com/package/card-orbit)
+**npm：** [`card-orbit@0.1.2`](https://www.npmjs.com/package/card-orbit)
 
 动效原理：
 
 - [专业版](./docs/动效说明-专业.md)
 - [大白话版](./docs/动效说明-大白话.md)
+- [轨道坐标演示（静态 HTML）](./docs/轨道演示.html)
+- 在线 3D：Demo 右上角切到 **轨道坐标**，或打开 `#/path`
 
 **完整用法（npm / 复制 / React / Vue / props）：** [docs/使用说明.md](./docs/使用说明.md)
 
