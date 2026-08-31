@@ -1,0 +1,101 @@
+/* src/core/styles.css */
+.card-orbit {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1220px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.card-orbit--desktop-only {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .card-orbit--desktop-only {
+    display: block;
+    height: 82vh;
+    max-height: 940px;
+  }
+}
+@media (min-width: 1280px) {
+  .card-orbit--desktop-only {
+    max-width: 1400px;
+    max-height: 1060px;
+  }
+}
+.card-orbit__stage {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  transform-style: preserve-3d;
+  transform: rotateX(3deg) rotateY(-4deg);
+}
+.card-orbit__stage:active {
+  cursor: grabbing;
+}
+.card-orbit__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62%;
+  margin: 0;
+}
+.card-orbit__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 22px 48px rgba(20, 20, 20, 0.22);
+}
+.card-orbit-mobile {
+  margin-top: 1.5rem;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .card-orbit-mobile--desktop-hide {
+    display: none;
+  }
+}
+.card-orbit-mobile__track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  will-change: transform;
+  animation: card-orbit-mobile-marquee 28s linear infinite;
+}
+@media (min-width: 640px) {
+  .card-orbit-mobile__track {
+    gap: 1rem;
+  }
+}
+.card-orbit-mobile__card {
+  flex: none;
+  width: 260px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+}
+@media (min-width: 640px) {
+  .card-orbit-mobile__card {
+    width: 320px;
+  }
+}
+.card-orbit-mobile__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes card-orbit-mobile-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+/*# sourceMappingURL=card-orbit.iife.css.map */
