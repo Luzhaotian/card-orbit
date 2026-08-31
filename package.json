@@ -11,6 +11,8 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "unpkg": "./dist/card-orbit.iife.js",
+  "jsdelivr": "./dist/card-orbit.iife.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -35,7 +37,8 @@
     "docs/使用说明.md",
     "docs/动效说明-专业.md",
     "docs/动效说明-大白话.md",
-    "docs/轨道演示.html"
+    "docs/轨道演示.html",
+    "docs/CDN示例.html"
   ],
   "publishConfig": {
     "access": "public"

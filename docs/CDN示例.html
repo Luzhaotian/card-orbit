@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>card-orbit · script 直引示例</title>
+  <!--
+    card-orbit 浏览器直引示例:零构建工具,React UMD + card-orbit 浏览器产物。
+
+    本文件用相对路径引用仓库内的 dist/ 产物 —— clone 仓库或安装 npm 包后,
+    双击即可在浏览器打开(需联网加载 React 与示例图片)。
+
+    已发布版本也可以直接用 CDN 地址,替换下面两行即可:
+      CSS: https://unpkg.com/card-orbit/dist/index.css
+      JS : https://unpkg.com/card-orbit/dist/card-orbit.iife.js
+           (等价:https://cdn.jsdelivr.net/npm/card-orbit)
+
+    注意:React 需用 18.x 的 UMD 版本 —— React 19 起官方不再提供 UMD 构建。
+  -->
+  <link rel="stylesheet" href="../dist/index.css" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: #0a0a0a;
+      background: #fff;
+      overflow: hidden;
+    }
+    .page {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      min-height: 100vh;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    .copy h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+    }
+    .copy p { margin: 0 0 1rem; line-height: 1.7; color: #0a0a0a; }
+    .copy .hint { color: #0a0a0a; opacity: 0.55; font-size: 0.9rem; }
+    .copy code {
+      padding: 0.15em 0.4em;
+      border-radius: 6px;
+      background: #f4f4f5;
+      font-size: 0.9em;
+    }
+    @media (min-width: 1024px) {
+      .page {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 3rem;
+        padding: 3rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="copy">
+      <h1>Card Orbit</h1>
+      <p>
+        路径约束的 3D 卡片轨道 —— 升起、弧线、飞出。<br />
+        本页没有任何构建工具:两个 <code>&lt;script&gt;</code> 引 React UMD,
+        一个 <code>&lt;script&gt;</code> 引 card-orbit 浏览器产物,全局变量 <code>CardOrbit</code>。
+      </p>
+      <p class="hint">宽屏可按住拖动调整方向 · 窄屏为横向跑马灯</p>
+      <div id="hero-mobile"></div>
+    </div>
+    <div id="hero-desktop"></div>
+  </main>
+
+  <!-- 1. React 18 UMD:提供全局 React / ReactDOM(React 19 起官方无 UMD) -->
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+  <!-- 2. card-orbit 浏览器产物:提供全局 CardOrbit(已用 CDN 时换成 unpkg/jsdelivr 地址) -->
+  <script src="../dist/card-orbit.iife.js"></script>
+
+  <script>
+    var CardOrbitDesktop = CardOrbit.CardOrbit
+    var CardOrbitMobile = CardOrbit.CardOrbitMobile
+
+    // 换成你自己的图片即可
+    var images = [
+      'https://luzhaotian.github.io/card-orbit/heroimg1.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg2.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg3.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg4.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg5.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg6.webp',
+      'https://luzhaotian.github.io/card-orbit/heroimg7.webp',
+    ]
+
+    function render(el, component, props) {
+      ReactDOM.createRoot(el).render(React.createElement(component, props))
+    }
+
+    render(document.getElementById('hero-desktop'), CardOrbitDesktop, { images: images })
+    render(document.getElementById('hero-mobile'), CardOrbitMobile, { images: images })
+  </script>
+</body>
+</html>

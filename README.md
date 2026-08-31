@@ -17,7 +17,7 @@ Path-constrained 3D card orbit for **React** and **Vue** — rise → arc → ex
 
 **完整用法（npm / 复制 / React / Vue / props）：** [docs/使用说明.md](./docs/使用说明.md)
 
-一套 `core`（路径 + 样式 + 动画驱动），两套薄封装。可 npm 安装，也可直接复制源码进项目。
+一套 `core`（路径 + 样式 + 动画驱动），两套薄封装。可 npm 安装、CDN `<script>` 直引，也可直接复制源码进项目。
 
 ## Install
 
@@ -68,6 +68,32 @@ const images = ['/a.webp', '/b.webp', '/c.webp']
 </template>
 ```
 
+## Usage — CDN（`<script>`）
+
+零构建工具：先引 React 18 UMD（React 19 起官方不再提供 UMD），再引 card-orbit 浏览器产物 —— 自包含、零依赖，全局变量 `CardOrbit`。
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/card-orbit/dist/index.css">
+
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/card-orbit/dist/card-orbit.iife.js"></script>
+
+<div id="hero"></div>
+<script>
+  var images = ['/a.webp', '/b.webp', '/c.webp']
+  ReactDOM.createRoot(document.getElementById('hero')).render(
+    React.createElement(React.Fragment, null,
+      React.createElement(CardOrbit.CardOrbitMobile, { images: images }),
+      React.createElement(CardOrbit.CardOrbit, { images: images }),
+    ),
+  )
+</script>
+```
+
+- 双击即开的完整示例：[docs/CDN示例.html](./docs/CDN示例.html)
+- Vue 版以 `.vue` SFC 源码发布，暂无 script 直引产物
+
 ## Copy as source
 
 不经过 npm 时，拷 `src/core` +（`src/react` 或 `src/vue`）即可。步骤见 [使用说明 · 复制进项目](./docs/使用说明.md#复制进项目不经过-npm)。
@@ -99,9 +125,10 @@ npm run typecheck
 src/core/   # 无框架核心
 src/react/  # React 适配
 src/vue/    # Vue 适配（源码形态随包发布）
+src/browser/# 浏览器直引构建的全局 shim（不随包发布）
 demo/       # React 演示站（部署到 GitHub Pages）
-docs/       # 使用说明 + 动效说明
-dist/       # npm React 构建产物
+docs/       # 使用说明 + 动效说明 + CDN 示例
+dist/       # 构建产物：React ESM/CJS/d.ts + card-orbit.iife.js + CSS
 ```
 
 ## 再发布
