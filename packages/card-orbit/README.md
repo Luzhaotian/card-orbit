@@ -3,23 +3,17 @@
 Path-constrained 3D card orbit for **React** and **Vue** — rise → arc → exit.  
 手写 `requestAnimationFrame` + 数学路径，**不依赖** Framer Motion / GSAP。
 
-动效灵感与参考实现来自：[tasteskill.dev](https://tasteskill.dev)。
-
+动效灵感与参考实现来自：[tasteskill.dev](https://tasteskill.dev)。  
 属于 [fxshelf](https://github.com/Luzhaotian/fxshelf) 动效书架中的一个可独立安装包。
 
 | | |
 |--|--|
-| **在线 Demo** | [luzhaotian.github.io/fxshelf](https://luzhaotian.github.io/fxshelf/)（`#/effects/card-orbit`） |
-| **npm** | [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) |
+| **文档 / Demo** | [luzhaotian.github.io/fxshelf](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit) |
+| **坐标演示** | [card-orbit-path](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit-path) |
+| **npm** | [`@fxshelf/card-orbit@0.1.4`](https://www.npmjs.com/package/@fxshelf/card-orbit) |
 | **CDN** | [unpkg](https://unpkg.com/@fxshelf/card-orbit/) · [jsDelivr](https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/) |
 
-动效原理：
-
-- [专业版](./docs/动效说明-专业.md)
-- [大白话版](./docs/动效说明-大白话.md)
-- [轨道坐标演示（静态 HTML）](./docs/轨道演示.html)
-
-**完整用法：** [docs/使用说明.md](./docs/使用说明.md)
+支持 **npm**、**CDN `<script>`**、**复制源码**。详细用法见站点文档或 [docs/使用说明.md](./docs/使用说明.md)。
 
 ## Install
 
@@ -53,7 +47,7 @@ export function Hero() {
 
 ## Usage — Vue
 
-入口为源码 SFC：`@fxshelf/card-orbit/vue`。详见 [使用说明 · Vue](./docs/使用说明.md#vue)。
+入口为源码 SFC：`@fxshelf/card-orbit/vue`。
 
 ```vue
 <script setup lang="ts">
@@ -69,9 +63,52 @@ const images = ['/a.webp', '/b.webp', '/c.webp']
 </template>
 ```
 
-## Usage — CDN
+## Usage — CDN（React 18 UMD）
 
-自包含浏览器产物 `dist/card-orbit.iife.js`，全局变量 `CardOrbit`。完整示例：[docs/CDN示例.html](./docs/CDN示例.html)。
+自包含产物 `dist/card-orbit.iife.js`，全局变量 `CardOrbit`。
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@fxshelf/card-orbit/dist/index.css" />
+
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js"></script>
+
+<div id="hero"></div>
+<script>
+  var images = ['/a.webp', '/b.webp', '/c.webp']
+  ReactDOM.createRoot(document.getElementById('hero')).render(
+    React.createElement(React.Fragment, null,
+      React.createElement(CardOrbit.CardOrbitMobile, { images: images }),
+      React.createElement(CardOrbit.CardOrbit, { images: images }),
+    ),
+  )
+</script>
+```
+
+## Copy as source
+
+不经过 npm 时，从本包 `src/`（或 `node_modules/@fxshelf/card-orbit/`）拷贝：
+
+```
+core/     # 必拷
+react/    # React 项目
+vue/      # Vue 项目
+```
+
+保持 `core` 与 `react`/`vue` 同级，然后：
+
+```tsx
+// React
+import { CardOrbit, CardOrbitMobile } from './components/card-orbit/react'
+import './components/card-orbit/core/styles.css'
+```
+
+```ts
+// Vue
+import { CardOrbit, CardOrbitMobile } from './components/card-orbit/vue'
+import './components/card-orbit/core/styles.css'
+```
 
 ## License
 

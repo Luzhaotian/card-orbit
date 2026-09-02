@@ -15,7 +15,13 @@ description: 适用于 React 与 Vue 的路径约束 3D 卡片轨道动效
 
 Card Orbit 是一套路径约束的 3D 卡片轨道动效：卡片沿固定轨迹升起、划弧、飞出。核心是手写 `requestAnimationFrame` 与数学路径，不依赖 Framer Motion / GSAP。
 
-一套 `core`（路径 + 样式 + 动画驱动）配 React / Vue 两套薄封装。支持 npm 安装、CDN `<script>`，或直接复制源码进项目。
+一套 `core`（路径 + 样式 + 动画驱动）配 React / Vue 两套薄封装。支持：
+
+| 方式 | React | Vue |
+|------|--------|-----|
+| **npm** | `@fxshelf/card-orbit` | `@fxshelf/card-orbit/vue` |
+| **CDN `<script>`** | `dist/card-orbit.iife.js` → 全局 `CardOrbit` | 暂无（SFC 源码） |
+| **复制源码** | 拷 `src/core` + `src/react` | 拷 `src/core` + `src/vue` |
 
 灵感与参考实现来自 [tasteskill.dev](https://tasteskill.dev)。
 
@@ -26,7 +32,7 @@ npm install @fxshelf/card-orbit
 ```
 
 - React：peer `react` / `react-dom` ≥ 18
-- Vue：peer `vue` ≥ 3.3，且能编译 `.vue`
+- Vue：peer `vue` ≥ 3.3，且能编译 `.vue`（如 Vite）
 - 样式：`import '@fxshelf/card-orbit/styles.css'`
 
 ## 用法
@@ -51,6 +57,8 @@ export function Hero() {
 
 ### Vue
 
+Vue 入口是源码 `.vue` SFC，不会预编译进 `dist`。目标项目需要能编译 SFC（例如 Vite + `@vitejs/plugin-vue`）。
+
 ```vue
 <script setup lang="ts">
 import { CardOrbit, CardOrbitMobile } from '@fxshelf/card-orbit/vue'
@@ -67,12 +75,106 @@ const images = ['/a.webp', '/b.webp', '/c.webp']
 
 ### CDN（React 18 UMD）
 
-```html
-<link rel="stylesheet" href="https://unpkg.com/@fxshelf/card-orbit/dist/index.css" />
+适合静态页或零构建场景。产物约 10 KB、零依赖，挂载全局 **`CardOrbit`**。需先加载 **React 18.x UMD**（React 19 起官方不再提供 UMD）。
 
-<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js"></script>
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://unpkg.com/@fxshelf/card-orbit/dist/index.css" />
+</head>
+<body>
+  <div id="hero"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js"></script>
+
+  <script>
+    var images = ['/a.webp', '/b.webp', '/c.webp']
+    ReactDOM.createRoot(document.getElementById('hero')).render(
+      React.createElement(React.Fragment, null,
+        React.createElement(CardOrbit.CardOrbitMobile, { images: images }),
+        React.createElement(CardOrbit.CardOrbit, { images: images }),
+      ),
+    )
+  </script>
+</body>
+</html>
 ```
 
-全局变量 `CardOrbit`。完整示例见包内 `docs/CDN示例.html`。
+- 全局 `CardOrbit` 上有 `CardOrbit`、`CardOrbitMobile` 及 core 工具（`createOrbit` / `samplePath` 等）。
+- 也可用 jsDelivr：`https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/dist/card-orbit.iife.js`
+- 顺序：React 必须在 card-orbit 之前加载。
+- Vue 暂无 script 直引；请用 npm 或下方复制源码。
+
+### 复制源码（不经过 npm）
+
+从仓库 [`packages/card-orbit/src`](https://github.com/Luzhaotian/fxshelf/tree/main/packages/card-orbit/src)（或已安装的 `node_modules/@fxshelf/card-orbit/`）拷贝：
+
+```
+src/core/     # 必拷
+src/react/    # 仅 React 项目
+src/vue/      # 仅 Vue 项目
+```
+
+建议放到例如 `components/card-orbit/`：
+
+```
+components/card-orbit/
+  core/
+  react/   或  vue/
+```
+
+1. 组件内相对路径已是 `../core/...`，保持 `core` 与 `react`/`vue` 同级即可。
+2. 引入一次样式：`import './core/styles.css'`。
+3. 当本地组件使用，不必跑本包的 build。
+
+**React**
+
+```tsx
+import { CardOrbit, CardOrbitMobile } from './components/card-orbit/react'
+import './components/card-orbit/core/styles.css'
+```
+
+**Vue**
+
+```ts
+import { CardOrbit, CardOrbitMobile } from './components/card-orbit/vue'
+import './components/card-orbit/core/styles.css'
+```
+
+## 组件与 props
+
+| 组件 | 作用 |
+|------|------|
+| `CardOrbit` | 桌面 3D 轨迹（默认仅 `lg+` / 1024px 显示） |
+| `CardOrbitMobile` | 窄屏横向跑马灯（默认 `lg+` 隐藏） |
+
+React / Vue **props 名称一致**。图片 URL 由调用方提供，包内不捆绑资源。典型搭配：二者同时挂载，靠内置 CSS 互斥显示。
+
+### `CardOrbit`
+
+| Prop | 默认 | 说明 |
+|------|------|------|
+| `images` | — | 图片 URL 数组（必填） |
+| `alts` | — | 与图片一一对应的 alt |
+| `className` / `style` | — | 根节点 |
+| `stageClassName` / `cardClassName` / `imageClassName` | — | 子节点 class |
+| `autoSpeed` | `45e-6` | 未拖动时自动推进 |
+| `dragSensitivity` | `8e-4` | 指针拖动灵敏度 |
+| `activeWindow` | `0.72` | 可见相位窗口 `(0, 1)` |
+| `perspective` | `3400` | CSS perspective（px） |
+| `ariaLabel` | `'Card orbit carousel'` | 无障碍标签 |
+| `desktopOnly` | `true` | 是否仅大屏显示 |
+
+### `CardOrbitMobile`
+
+| Prop | 默认 | 说明 |
+|------|------|------|
+| `images` / `alts` | — | 同桌面 |
+| `className` / `style` | — | 根节点 |
+| `trackClassName` / `cardClassName` / `imageClassName` | — | 子节点 class |
+| `hideOnDesktop` | `true` | `lg+` 是否隐藏 |
+| `durationSec` | `28` | 跑马灯一周时长（秒） |

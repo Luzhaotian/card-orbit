@@ -1,23 +1,26 @@
 # fxshelf
 
+[English](./README.md) · [中文](./README.zh-CN.md)
+
 A shelf of copy-friendly micro animation packages for **React** and **Vue**.  
-Browse the site, install only the package you need — no Framer Motion / GSAP required.
+Browse the site, install only the package you need — or copy the source into your project. No Framer Motion / GSAP required.
 
 | | |
 |--|--|
-| **Site** | [luzhaotian.github.io/fxshelf](https://luzhaotian.github.io/fxshelf/) |
-| **Docs** | Fumadocs (`apps/site`) |
+| **Site / Docs** | [luzhaotian.github.io/fxshelf](https://luzhaotian.github.io/fxshelf/) |
 | **Scope** | `@fxshelf/*` |
 
 ## Packages
 
-| Package | Description |
-|---------|-------------|
-| [`@fxshelf/card-orbit`](./packages/card-orbit) | Path-constrained 3D card orbit — rise, arc, exit |
+| Package | Version | Description |
+|---------|---------|-------------|
+| [`@fxshelf/card-orbit`](./packages/card-orbit) | `0.1.4` | Path-constrained 3D card orbit — rise, arc, exit |
 
 ```bash
 npm install @fxshelf/card-orbit
 ```
+
+Each package supports three usage modes: **npm**, **CDN `<script>`** (React), and **copying `src/core` + `react` / `vue` source**. See the site docs for Demo, props, and a full CDN example.
 
 ## Local development
 
@@ -37,9 +40,9 @@ apps/site/       # Fumadocs docs (Next.js static export)
 
 ## Add a new effect
 
-1. Create `packages/<id>/` with `name`: `@fxshelf/<id>`
+1. Create `packages/<id>/` with `"name": "@fxshelf/<id>"`
 2. Append an entry in [`apps/site/lib/effects.ts`](./apps/site/lib/effects.ts)
-3. Add `apps/site/content/docs/effects/<id>.mdx` (Demo + 简介 + 安装 + 用法)
+3. Add `apps/site/content/docs/effects/<id>.mdx` (Demo + intro + install + usage: npm / CDN / copy-source + props)
 4. Update [`apps/site/content/docs/effects/meta.json`](./apps/site/content/docs/effects/meta.json)
 5. Homepage cards pick it up from the registry
 
@@ -47,7 +50,7 @@ apps/site/       # Fumadocs docs (Next.js static export)
 
 ```bash
 cd packages/card-orbit
-# bump version, then:
+# bump version in package.json, then:
 npm run pack:check
 npm publish --access public
 ```
