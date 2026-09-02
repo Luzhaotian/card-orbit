@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'katex/dist/katex.min.css';
+
+:root {
+  --fx-accent: #ff6b00;
+  --fx-accent-deep: #cc5400;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+.fx-grid {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(255, 107, 0, 0.12), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(0, 0, 0, 0.04), transparent 50%);
+}

@@ -1,0 +1,90 @@
+{
+  "name": "@fxshelf/card-orbit",
+  "version": "0.1.3",
+  "description": "Path-constrained 3D card orbit carousel for React and Vue — rise, arc, exit. No Framer Motion / GSAP. Copy-as-source friendly.",
+  "license": "MIT",
+  "author": "Lu Zhaotian",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/card-orbit.iife.js",
+  "jsdelivr": "./dist/card-orbit.iife.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./vue": {
+      "types": "./src/vue/index.ts",
+      "import": "./src/vue/index.ts",
+      "default": "./src/vue/index.ts"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "src/core",
+    "src/react",
+    "src/vue",
+    "src/vue-shim.d.ts",
+    "README.md",
+    "LICENSE",
+    "docs/使用说明.md",
+    "docs/动效说明-专业.md",
+    "docs/动效说明-大白话.md",
+    "docs/轨道演示.html",
+    "docs/CDN示例.html"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup && node scripts/postbuild.mjs",
+    "lint": "oxlint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pack:check": "npm run build && npm pack --dry-run",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "vue": ">=3.3"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "fxshelf",
+    "react",
+    "vue",
+    "carousel",
+    "card",
+    "orbit",
+    "3d",
+    "animation",
+    "hero",
+    "raf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luzhaotian/fxshelf.git",
+    "directory": "packages/card-orbit"
+  },
+  "bugs": {
+    "url": "https://github.com/Luzhaotian/fxshelf/issues"
+  },
+  "homepage": "https://github.com/Luzhaotian/fxshelf/tree/main/packages/card-orbit#readme"
+}

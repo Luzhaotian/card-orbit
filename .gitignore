@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+dist
+**/dist
 dist-ssr
 *.local
 
@@ -27,3 +29,17 @@ dist-ssr
 
 # Local planning docs
 docs/superpowers/
+
+# Build outputs
+dist
+**/dist
+
+# Docs site
+build
+.docusaurus
+out
+.next
+source.config.mjs
+**/source.config.mjs
+apps/site/source.config.mjs
+apps/site/.source

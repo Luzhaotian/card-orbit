@@ -1,114 +1,39 @@
 {
-  "name": "card-orbit",
-  "version": "0.1.4",
-  "description": "Path-constrained 3D card orbit carousel for React and Vue — rise, arc, exit. No Framer Motion / GSAP. Copy-as-source friendly.",
+  "name": "fxshelf",
+  "version": "0.0.0",
+  "private": true,
+  "description": "fxshelf — a shelf of copy-friendly micro animation packages for React and Vue.",
   "license": "MIT",
   "author": "Lu Zhaotian",
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
+  "workspaces": [
+    "packages/*",
+    "apps/*"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "unpkg": "./dist/card-orbit.iife.js",
-  "jsdelivr": "./dist/card-orbit.iife.js",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./vue": {
-      "types": "./src/vue/index.ts",
-      "import": "./src/vue/index.ts",
-      "default": "./src/vue/index.ts"
-    },
-    "./styles.css": "./dist/index.css"
-  },
-  "files": [
-    "dist",
-    "src/core",
-    "src/react",
-    "src/vue",
-    "src/vue-shim.d.ts",
-    "README.md",
-    "LICENSE",
-    "docs/使用说明.md",
-    "docs/动效说明-专业.md",
-    "docs/动效说明-大白话.md",
-    "docs/轨道演示.html",
-    "docs/CDN示例.html"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "dev": "vite --config demo/vite.config.ts",
-    "build": "tsup && node scripts/postbuild.mjs",
-    "build:demo": "vite build --config demo/vite.config.ts",
-    "build:demo:pages": "GITHUB_PAGES=true vite build --config demo/vite.config.ts",
-    "preview": "vite preview --config demo/vite.config.ts",
-    "lint": "oxlint src demo/src",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p demo/tsconfig.json --noEmit",
-    "pack:check": "npm run build && npm pack --dry-run",
-    "prepublishOnly": "npm run typecheck && npm run build"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
-    "vue": ">=3.3"
-  },
-  "peerDependenciesMeta": {
-    "vue": {
-      "optional": true
-    },
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "dev": "npm run dev -w @fxshelf/site",
+    "build": "npm run build -w @fxshelf/card-orbit",
+    "build:site": "npm run build -w @fxshelf/site",
+    "build:site:pages": "GITHUB_PAGES=true npm run build -w @fxshelf/site",
+    "preview": "npm run preview -w @fxshelf/site",
+    "lint": "oxlint packages/card-orbit/src apps/site/components apps/site/lib apps/site/app",
+    "typecheck": "npm run typecheck -w @fxshelf/card-orbit && npm run typecheck -w @fxshelf/site",
+    "pack:check": "npm run pack:check -w @fxshelf/card-orbit"
   },
   "devDependencies": {
-    "@react-three/drei": "^10.7.8",
-    "@react-three/fiber": "^9.7.0",
-    "@tailwindcss/vite": "^4.3.3",
-    "@types/katex": "^0.16.8",
-    "@types/node": "^24.13.3",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@types/three": "^0.185.4",
-    "@vitejs/plugin-react": "^6.1.0",
-    "katex": "^0.18.4",
     "oxlint": "^1.79.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.3",
-    "tailwindcss": "^4.3.3",
-    "three": "^0.185.1",
     "tsup": "^8.5.0",
     "typescript": "~5.8.3",
-    "vite": "^8.2.2",
     "vue": "^3.5.42"
   },
-  "keywords": [
-    "react",
-    "vue",
-    "carousel",
-    "card",
-    "orbit",
-    "3d",
-    "animation",
-    "hero",
-    "raf"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luzhaotian/card-orbit.git"
+    "url": "git+https://github.com/Luzhaotian/fxshelf.git"
   },
   "bugs": {
-    "url": "https://github.com/Luzhaotian/card-orbit/issues"
+    "url": "https://github.com/Luzhaotian/fxshelf/issues"
   },
-  "homepage": "https://github.com/Luzhaotian/card-orbit#readme"
+  "homepage": "https://github.com/Luzhaotian/fxshelf#readme"
 }

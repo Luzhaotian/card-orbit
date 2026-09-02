@@ -1,0 +1,42 @@
+{
+  "name": "@fxshelf/site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "serve out",
+    "preview": "serve out",
+    "typecheck": "next typegen && tsc --noEmit",
+    "postinstall": "fumadocs-mdx"
+  },
+  "dependencies": {
+    "@fxshelf/card-orbit": "*",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "cnfast": "^0.1.0",
+    "fumadocs-core": "16.15.4",
+    "fumadocs-mdx": "15.4.0",
+    "fumadocs-ui": "16.15.4",
+    "katex": "^0.18.4",
+    "lucide-react": "^0.544.0",
+    "next": "16.3.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.1",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/katex": "^0.16.8",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/three": "^0.185.4",
+    "postcss": "^8.5.6",
+    "serve": "^14.2.6",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.8.3"
+  }
+}

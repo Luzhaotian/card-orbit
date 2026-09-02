@@ -1,0 +1,170 @@
+.root {
+  color: #0a0a0a;
+  background: #efece6;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 996px) {
+  .layout {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+}
+
+.copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.back {
+  width: fit-content;
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #737373;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #cc5400;
+}
+
+.title {
+  margin: 0.75rem 0 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.body {
+  margin: 1rem 0 0;
+  max-width: 28rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #525252;
+}
+
+.panel {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.muted {
+  color: #737373;
+}
+
+.mono {
+  margin-top: 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: #737373;
+}
+
+.segs {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.segActive,
+.segIdle {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.segActive {
+  opacity: 1;
+}
+
+.segIdle {
+  opacity: 0.4;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.35rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.segLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.button {
+  margin-top: 1.75rem;
+  width: fit-content;
+  border: 0;
+  border-radius: 8px;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #222;
+}
+
+.canvasWrap {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: #f7f5f1;
+  box-shadow: 0 24px 60px rgba(20, 20, 20, 0.08);
+}
+
+@media (min-width: 996px) {
+  .canvasWrap {
+    min-height: 560px;
+  }
+}
+
+.hint {
+  pointer-events: none;
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  margin: 0;
+  font-size: 0.7rem;
+  color: #737373;
+}

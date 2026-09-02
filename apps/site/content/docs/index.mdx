@@ -1,0 +1,26 @@
+---
+title: 入门
+description: 浏览并安装 fxshelf 动效包
+---
+
+**fxshelf** 是一组可复制源码、按需安装的 React / Vue 微动效包。
+
+每个动效独立发布在 `@fxshelf/*` 下，只装你需要的那个即可。
+
+## 浏览
+
+<Cards>
+  <Card title="Card Orbit" href="/docs/effects/card-orbit" description="路径约束的 3D 卡片轨道 —— 升起、弧线、飞出。" />
+</Cards>
+
+```bash
+npm install @fxshelf/card-orbit
+```
+
+## 新增动效
+
+1. 在 `packages/<id>/` 新建包，`name` 设为 `@fxshelf/<id>`
+2. 在 `apps/site/lib/effects.ts` 追加一条 registry
+3. 添加 `apps/site/content/docs/effects/<id>.mdx`
+4. 更新 `apps/site/content/docs/effects/meta.json`
+5. 首页卡片会自动读取 registry
