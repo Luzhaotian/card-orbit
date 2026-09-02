@@ -7,17 +7,19 @@
   <!--
     @fxshelf/card-orbit 浏览器直引示例:零构建工具,React UMD + card-orbit 浏览器产物。
 
-    资源全部走 CDN,本文件放哪里都能直接打开(需联网):
-      CSS / JS 引 jsdelivr 的 GitHub 直链(packages/card-orbit/dist 产物)。
-
-    npm 发布新版本后,可换成 npm 地址:
+    资源走 npm CDN(需联网,包已发布为 @fxshelf/card-orbit):
       CSS: https://unpkg.com/@fxshelf/card-orbit/dist/index.css
       JS : https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js
            (等价:https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit)
 
+    本地已 build 时也可改成相对路径:
+      ../dist/index.css
+      ../dist/card-orbit.iife.js
+
+    注意:不要用 jsDelivr 的 gh/.../dist 直链 —— dist/ 不进 Git,会 404。
     注意:React 需用 18.x 的 UMD 版本 —— React 19 起官方不再提供 UMD 构建。
   -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Luzhaotian/fxshelf@main/packages/card-orbit/dist/index.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fxshelf/card-orbit/dist/index.css" />
   <style>
     * { box-sizing: border-box; }
     body {
@@ -79,8 +81,8 @@
   <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 
-  <!-- 2. card-orbit 浏览器产物:提供全局 CardOrbit(jsdelivr 的 GitHub 直链) -->
-  <script src="https://cdn.jsdelivr.net/gh/Luzhaotian/fxshelf@main/packages/card-orbit/dist/card-orbit.iife.js"></script>
+  <!-- 2. card-orbit 浏览器产物:提供全局 CardOrbit -->
+  <script src="https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js"></script>
 
   <script>
     var CardOrbitDesktop = CardOrbit.CardOrbit

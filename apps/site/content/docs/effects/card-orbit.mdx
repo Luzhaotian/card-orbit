@@ -5,7 +5,7 @@ description: 适用于 React 与 Vue 的路径约束 3D 卡片轨道动效
 
 路径约束的 3D 卡片轨道 —— 升起、弧线、飞出。
 
-`npm install @fxshelf/card-orbit` · [坐标演示动画 →](/docs/effects/card-orbit-path)
+[`npm i @fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) · [坐标演示动画 →](/docs/effects/card-orbit-path)
 
 ## Demo
 
@@ -19,8 +19,8 @@ Card Orbit 是一套路径约束的 3D 卡片轨道动效：卡片沿固定轨�
 
 | 方式 | React | Vue |
 |------|--------|-----|
-| **npm** | `@fxshelf/card-orbit` | `@fxshelf/card-orbit/vue` |
-| **CDN `<script>`** | `dist/card-orbit.iife.js` → 全局 `CardOrbit` | 暂无（SFC 源码） |
+| **npm** | [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) | `@fxshelf/card-orbit/vue` |
+| **CDN `<script>`** | [unpkg IIFE](https://unpkg.com/@fxshelf/card-orbit/dist/card-orbit.iife.js) → 全局 `CardOrbit` | 暂无（SFC 源码） |
 | **复制源码** | 拷 `src/core` + `src/react` | 拷 `src/core` + `src/vue` |
 
 灵感与参考实现来自 [tasteskill.dev](https://tasteskill.dev)。
@@ -106,8 +106,12 @@ const images = ['/a.webp', '/b.webp', '/c.webp']
 
 - 全局 `CardOrbit` 上有 `CardOrbit`、`CardOrbitMobile` 及 core 工具（`createOrbit` / `samplePath` 等）。
 - 也可用 jsDelivr：`https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/dist/card-orbit.iife.js`
+- 生产环境建议锁定版本：`@fxshelf/card-orbit@0.1.5/...`
 - 顺序：React 必须在 card-orbit 之前加载。
+- 不要用 jsDelivr 的 `gh/.../dist` 直链（`dist/` 不进 Git）。
+- 仓库内完整示例：[CDN示例.html](https://github.com/Luzhaotian/fxshelf/blob/main/packages/card-orbit/docs/CDN示例.html)
 - Vue 暂无 script 直引；请用 npm 或下方复制源码。
+- 旧无 scope 包名 `card-orbit` 已迁移至 `@fxshelf/card-orbit`。
 
 ### 复制源码（不经过 npm）
 

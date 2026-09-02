@@ -14,13 +14,13 @@
 
 | 包名 | 版本 | 说明 |
 |------|------|------|
-| [`@fxshelf/card-orbit`](./packages/card-orbit) | `0.1.4` | 路径约束的 3D 卡片轨道 —— 升起、弧线、飞出 |
+| [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) | [`0.1.5`](./packages/card-orbit) | 路径约束的 3D 卡片轨道 —— 升起、弧线、飞出 |
 
 ```bash
 npm install @fxshelf/card-orbit
 ```
 
-每个包支持三种用法：**npm**、**CDN `<script>`**（React）、**复制 `src/core` + `react` / `vue` 源码**。站点文档页含 Demo、props 与完整 CDN 示例。
+每个包支持三种用法：**npm**、**CDN `<script>`**（React，经 [unpkg](https://unpkg.com/@fxshelf/card-orbit/) / [jsDelivr](https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/)）、**复制 `src/core` + `react` / `vue` 源码**。详见 [站点文档](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit)。
 
 ## 本地开发
 
@@ -48,7 +48,10 @@ apps/site/       # Fumadocs 文档站（Next.js 静态导出）
 
 ## 发布包
 
+需要先有 npm 组织 **`fxshelf`**（scoped 包要求你是该 org 成员且有发布权限）。
+
 ```bash
+npm whoami                 # 确认已登录
 cd packages/card-orbit
 # 先改 package.json 里的 version，然后：
 npm run pack:check

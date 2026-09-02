@@ -14,13 +14,13 @@ Browse the site, install only the package you need — or copy the source into y
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [`@fxshelf/card-orbit`](./packages/card-orbit) | `0.1.4` | Path-constrained 3D card orbit — rise, arc, exit |
+| [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) | [`0.1.5`](./packages/card-orbit) | Path-constrained 3D card orbit — rise, arc, exit |
 
 ```bash
 npm install @fxshelf/card-orbit
 ```
 
-Each package supports three usage modes: **npm**, **CDN `<script>`** (React), and **copying `src/core` + `react` / `vue` source**. See the site docs for Demo, props, and a full CDN example.
+Each package supports three usage modes: **npm**, **CDN `<script>`** (React via [unpkg](https://unpkg.com/@fxshelf/card-orbit/) / [jsDelivr](https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/)), and **copying `src/core` + `react` / `vue` source**. See the [site docs](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit) for Demo, props, and a full CDN example.
 
 ## Local development
 
@@ -48,7 +48,10 @@ apps/site/       # Fumadocs docs (Next.js static export)
 
 ## Publish a package
 
+Requires an npm organization named **`fxshelf`** (scoped packages need org membership + publish rights).
+
 ```bash
+npm whoami                 # must be logged in
 cd packages/card-orbit
 # bump version in package.json, then:
 npm run pack:check

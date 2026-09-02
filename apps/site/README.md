@@ -11,3 +11,4 @@ npm run dev
 - Docs content: `content/docs`
 - Live demos: `components/effects/*`
 - GitHub Pages output: `out/` with `basePath=/fxshelf` when `GITHUB_PAGES=true`
+- Published packages (e.g. CDN demos in docs) use npm / unpkg — not GitHub `dist/` links
