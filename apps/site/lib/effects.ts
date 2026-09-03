@@ -14,4 +14,11 @@ export const effects: EffectMeta[] = [
     packageName: '@fxshelf/card-orbit',
     docPath: '/docs/effects/card-orbit',
   },
+  {
+    id: 'glyph-rain',
+    title: 'Glyph Rain',
+    blurb: 'Matrix 风格字符雨 —— 光标搅动，可选内容照明。',
+    packageName: '@fxshelf/glyph-rain',
+    docPath: '/docs/effects/glyph-rain',
+  },
 ]

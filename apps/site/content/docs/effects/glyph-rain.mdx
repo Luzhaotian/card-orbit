@@ -1,0 +1,138 @@
+---
+title: Glyph Rain
+description: Matrix 风格字符雨 —— WebGL2，光标搅动，可选内容照明
+---
+
+字符从页面倾泻而下；雨滴头部拖着光晕扫过内容。光标穿过雨幕时会搅动气流。
+
+[`npm i @fxshelf/glyph-rain`](https://www.npmjs.com/package/@fxshelf/glyph-rain)
+
+## Demo
+
+<GlyphRainDemo />
+
+## 简介
+
+Glyph Rain 是一套 WebGL2 字符雨动效：片元着色器程序化生成雨柱与拖尾，指针 wake 场驱动搅动。有 Chrome 实验性 **html-in-canvas** 时，还会把子内容采样进 shader，做压暗与雨滴点光；否则退化为半透明雨层叠加在普通 DOM 上。
+
+一套 `core`（atlas + shader + 引擎）配 React / Vue 两套薄封装。支持：
+
+| 方式 | React | Vue |
+|------|--------|-----|
+| **npm** | [`@fxshelf/glyph-rain`](https://www.npmjs.com/package/@fxshelf/glyph-rain) | `@fxshelf/glyph-rain/vue` |
+| **CDN `<script>`** | [unpkg IIFE](https://unpkg.com/@fxshelf/glyph-rain/dist/glyph-rain.iife.js) → 全局 `GlyphRain` | 暂无（SFC 源码） |
+| **复制源码** | 拷 `src/core` + `src/react` | 拷 `src/core` + `src/vue` |
+
+灵感与参考实现来自 [Canvas UI Glyph Rain](https://canvasui.dev/docs/components/glyph-rain)。
+
+## 安装
+
+```bash
+npm install @fxshelf/glyph-rain
+```
+
+- React：peer `react` / `react-dom` ≥ 18
+- Vue：peer `vue` ≥ 3.3，且能编译 `.vue`（如 Vite）
+- 运行时：WebGL2；内容照明需实验性 html-in-canvas
+
+## 用法
+
+### React
+
+```tsx
+import { GlyphRain } from '@fxshelf/glyph-rain'
+
+export function Hero() {
+  return (
+    <GlyphRain style={{ height: 420 }} density={0.18} stir={0.8}>
+      <img src="/photo.jpg" alt="" style={{ width: '100%', display: 'block' }} />
+    </GlyphRain>
+  )
+}
+```
+
+### Vue
+
+Vue 入口是源码 `.vue` SFC，不会预编译进 `dist`。
+
+```vue
+<script setup lang="ts">
+import { GlyphRain } from '@fxshelf/glyph-rain/vue'
+</script>
+
+<template>
+  <GlyphRain :style="{ height: '420px' }" :density="0.18" :stir="0.8">
+    <img src="/photo.jpg" alt="" style="width: 100%; display: block" />
+  </GlyphRain>
+</template>
+```
+
+### CDN（React 18 UMD）
+
+需先加载 **React 18.x UMD**，再加载 IIFE。
+
+```html
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@fxshelf/glyph-rain/dist/glyph-rain.iife.js"></script>
+<script>
+  const { GlyphRain } = window.GlyphRain
+  const root = ReactDOM.createRoot(document.getElementById('app'))
+  root.render(
+    React.createElement(
+      GlyphRain,
+      { style: { height: 420 }, density: 0.18 },
+      React.createElement('img', {
+        src: '/photo.jpg',
+        alt: '',
+        style: { width: '100%', display: 'block' },
+      }),
+    ),
+  )
+</script>
+```
+
+### 复制源码
+
+拷贝 `packages/glyph-rain/src/core` 与 `src/react`（或 `src/vue`）即可，零 npm 依赖（peer 框架除外）。
+
+## Props
+
+| Property | Type | Default | 说明 |
+|----------|------|---------|------|
+| `charset` | `string` | 片假名 + 数字等 | 雨滴字符集 |
+| `cell` | `number` | `15` | 字元格大小（8–64） |
+| `color` | `[r,g,b]` | `[0.267, 0.455, 1]` | 雨色 0–1 |
+| `headColor` | `[r,g,b]` | `[0.169, 0.416, 1]` | 头部亮色 |
+| `speed` | `number` | `0.2` | 下落速度 |
+| `speedVariance` | `number` | `0.5` | 列速差 |
+| `density` | `number` | `0.15` | 生成密度 |
+| `trail` | `number` | `0.65` | 拖尾 |
+| `glow` | `number` | `1.75` | 头部亮度 |
+| `mutate` | `number` | `0` | 字符突变速度 |
+| `flicker` | `number` | `0` | 闪烁 |
+| `layers` | `number` | `2` | 视差层 1–3 |
+| `dim` | `number` | `0.5` | 未照亮区域压暗 |
+| `light` | `number` | `2.8` | 雨滴照明强度 |
+| `lightRadius` | `number` | `240` | 光池半径 |
+| `lightHeight` | `number` | `172` | 光源高度 |
+| `relief` | `number` | `0.05` | 浮雕感 |
+| `stir` | `number` | `0.7` | 光标搅动 |
+| `stirRadius` | `number` | `260` | 搅动半径 |
+| `settle` | `number` | `0.9` | 余波回稳秒数 |
+| `className` | `string` | — | 外层 class |
+| `style` | `CSSProperties` | — | 外层样式 |
+| `children` | `ReactNode` / slot | — | 被雨覆盖的内容 |
+
+## 核心 API
+
+也可直接使用框架无关引擎：
+
+```ts
+import { createGlyphRain, supportsHtmlInCanvas } from '@fxshelf/glyph-rain'
+
+const ok = supportsHtmlInCanvas()
+const rain = createGlyphRain({ source, content, output }, { density: 0.2 })
+rain?.setOptions({ stir: 0 })
+rain?.destroy()
+```

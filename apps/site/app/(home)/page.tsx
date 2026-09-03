@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { effects } from '@/lib/effects'
 import { CardOrbitPreview } from '@/components/effects/card-orbit-preview'
+import { GlyphRainPreview } from '@/components/effects/glyph-rain-preview'
 
 function EffectPreview({ id }: { id: string }) {
   if (id === 'card-orbit') return <CardOrbitPreview />
+  if (id === 'glyph-rain') return <GlyphRainPreview />
   return (
     <div className="flex aspect-[16/10] items-center justify-center bg-fd-muted text-sm text-fd-muted-foreground">
       预览

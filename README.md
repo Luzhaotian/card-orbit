@@ -15,12 +15,14 @@ Browse the site, install only the package you need — or copy the source into y
 | Package | Version | Description |
 |---------|---------|-------------|
 | [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) | [`0.1.5`](./packages/card-orbit) | Path-constrained 3D card orbit — rise, arc, exit |
+| [`@fxshelf/glyph-rain`](https://www.npmjs.com/package/@fxshelf/glyph-rain) | [`0.1.0`](./packages/glyph-rain) | Matrix-style glyph rain — cursor stir, optional content lighting |
 
 ```bash
 npm install @fxshelf/card-orbit
+npm install @fxshelf/glyph-rain
 ```
 
-Each package supports three usage modes: **npm**, **CDN `<script>`** (React via [unpkg](https://unpkg.com/@fxshelf/card-orbit/) / [jsDelivr](https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/)), and **copying `src/core` + `react` / `vue` source**. See the [site docs](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit) for Demo, props, and a full CDN example.
+Each package supports three usage modes: **npm**, **CDN `<script>`** (React via unpkg / jsDelivr), and **copying `src/core` + `react` / `vue` source**. See the [site docs](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit) for Demo, props, and a full CDN example.
 
 ## Local development
 

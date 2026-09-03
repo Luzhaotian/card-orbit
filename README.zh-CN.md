@@ -15,12 +15,14 @@
 | 包名 | 版本 | 说明 |
 |------|------|------|
 | [`@fxshelf/card-orbit`](https://www.npmjs.com/package/@fxshelf/card-orbit) | [`0.1.5`](./packages/card-orbit) | 路径约束的 3D 卡片轨道 —— 升起、弧线、飞出 |
+| [`@fxshelf/glyph-rain`](https://www.npmjs.com/package/@fxshelf/glyph-rain) | [`0.1.0`](./packages/glyph-rain) | Matrix 风格字符雨 —— 光标搅动，可选内容照明 |
 
 ```bash
 npm install @fxshelf/card-orbit
+npm install @fxshelf/glyph-rain
 ```
 
-每个包支持三种用法：**npm**、**CDN `<script>`**（React，经 [unpkg](https://unpkg.com/@fxshelf/card-orbit/) / [jsDelivr](https://cdn.jsdelivr.net/npm/@fxshelf/card-orbit/)）、**复制 `src/core` + `react` / `vue` 源码**。详见 [站点文档](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit)。
+每个包支持三种用法：**npm**、**CDN `<script>`**（React，经 unpkg / jsDelivr）、**复制 `src/core` + `react` / `vue` 源码**。详见 [站点文档](https://luzhaotian.github.io/fxshelf/docs/effects/card-orbit)。
 
 ## 本地开发
 
