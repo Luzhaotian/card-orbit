@@ -1,17 +1,11 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
-import { appName, gitConfig } from './shared'
+import { FxshelfLogo } from '@/components/brand/fxshelf-logo'
+import { gitConfig } from './shared'
 
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: (
-        <>
-          <span className="inline-flex size-6 items-center justify-center rounded-md bg-fd-foreground text-[10px] font-semibold text-fd-background">
-            FX
-          </span>
-          <span className="font-semibold tracking-tight">{appName}</span>
-        </>
-      ),
+      title: <FxshelfLogo />,
     },
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
     links: [

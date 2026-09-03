@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     template: '%s · fxshelf',
   },
   description: '可复制源码、按需安装的 React / Vue 微动效包书架。',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+  },
 }
 
 export default function Layout({ children }: LayoutProps<'/'>) {
