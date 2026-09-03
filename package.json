@@ -13,8 +13,8 @@
   "scripts": {
     "dev": "npm run dev -w @fxshelf/site",
     "build": "npm run build -w @fxshelf/card-orbit && npm run build -w @fxshelf/glyph-rain",
-    "build:site": "npm run build -w @fxshelf/site",
-    "build:site:pages": "GITHUB_PAGES=true npm run build -w @fxshelf/site",
+    "build:site": "npm run build && npm run build -w @fxshelf/site",
+    "build:site:pages": "npm run build && GITHUB_PAGES=true npm run build -w @fxshelf/site",
     "preview": "npm run preview -w @fxshelf/site",
     "lint": "oxlint packages/card-orbit/src packages/glyph-rain/src apps/site/components apps/site/lib apps/site/app",
     "typecheck": "npm run typecheck -w @fxshelf/card-orbit && npm run typecheck -w @fxshelf/glyph-rain && npm run typecheck -w @fxshelf/site",

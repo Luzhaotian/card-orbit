@@ -30,9 +30,8 @@ jobs:
       - name: Install
         run: npm ci
 
+      # packages/*/dist is gitignored; build workspace packages before the site
       - name: Build site
-        env:
-          GITHUB_PAGES: 'true'
         run: npm run build:site:pages
 
       - name: Upload Pages artifact
